@@ -12,6 +12,7 @@ function App() {
   const [inventory, setInventory] = useState([])
   const [purchases, setPurchases] = useState([])
   const [showLowStock, setShowLowStock] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const [catalogFilter, setCatalogFilter] = useState('all')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -103,6 +104,11 @@ function App() {
 
   return (
     <main>
+      <aside className={`sidebar ${sidebarOpen ? 'open' : 'collapsed'}`} aria-label="Riverside Books team apps">
+        <button className="sidebar-toggle" type="button" aria-label={sidebarOpen ? 'Collapse team app sidebar' : 'Expand team app sidebar'} onClick={() => setSidebarOpen((open) => !open)}>{sidebarOpen ? '‹' : '›'}</button>
+        <div className="sidebar-brand"><span className="brand-mark"><i /></span>{sidebarOpen && <span><b>Riverside</b><strong>Books</strong></span>}</div>
+        {sidebarOpen && <><p className="sidebar-label">Team suite</p><nav className="team-links"><a href="https://riverside-readers-app.vercel.app/" target="_blank" rel="noreferrer"><span>↗</span>Customer Ordering & Loyalty</a><a className="active" href="#inventory"><span>▣</span>Staff Ops & Inventory</a><a href="https://riverside-books-chatbot-khaki.vercel.app/" target="_blank" rel="noreferrer"><span>◌</span>Customer Support Chatbot</a><a href="https://pursuit-core.slack.com/archives/C0BQP69G23X/p1787360716063449" target="_blank" rel="noreferrer"><span>✦</span>Team Slack</a></nav><div className="sidebar-foot">Shared Riverside workspace</div></>}
+      </aside>
       <header className="topbar"><a className="brand" href="#catalog"><span className="brand-mark"><i /></span><span><b>Riverside</b><strong>Books</strong></span></a><nav><a href="#inventory">Inventory</a><a href="#catalog">Catalog</a><a href="#staff-picks">Staff Picks</a><a href="#settings">Admin Settings</a></nav><button className="refresh" type="button" onClick={loadData}>Refresh data</button></header>
       <div className="promo">A cozy corner for readers, now with teal and sky blue accents <span>↗</span></div>
       <section className="intro hero"><div><p className="eyebrow">Independent bookseller · Since 1987</p><h2>Riverside Books</h2><p className="tagline">Curated staff picks, new arrivals, and a few old favorites worth revisiting on a rainy afternoon.</p><div className="quick-filters"><button className={catalogFilter === 'new' ? 'active' : ''} onClick={() => setCatalogFilter('new')}>Shop new arrivals</button><button className={catalogFilter === 'staff' ? 'active' : ''} onClick={() => setCatalogFilter('staff')}>Staff pick</button><button onClick={() => setCatalogFilter('new')}>New arrival</button><button onClick={() => setCatalogFilter('all')}>Rewards</button></div></div><div className="hero-art" aria-label="Plant and book illustration"><div className="leaf leaf-one" /><div className="leaf leaf-two" /><div className="book-shape" /></div></section>
