@@ -12,7 +12,7 @@ function App() {
   const [inventory, setInventory] = useState([])
   const [purchases, setPurchases] = useState([])
   const [showLowStock, setShowLowStock] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth > 820)
   const [searchQuery, setSearchQuery] = useState('')
   const [genreFilter, setGenreFilter] = useState('all')
   const [activity, setActivity] = useState([])
@@ -164,6 +164,7 @@ function App() {
 
   return (
     <main>
+      <button className="mobile-menu" type="button" aria-label={sidebarOpen ? 'Close team app menu' : 'Open team app menu'} onClick={() => setSidebarOpen((open) => !open)}>☰</button>
       <aside className={`sidebar ${sidebarOpen ? 'open' : 'collapsed'}`} aria-label="Riverside Books team apps">
         <button className="sidebar-toggle" title={sidebarOpen ? 'Collapse team app sidebar' : 'Expand team app sidebar'} type="button" aria-label={sidebarOpen ? 'Collapse team app sidebar' : 'Expand team app sidebar'} onClick={() => setSidebarOpen((open) => !open)}>{sidebarOpen ? '‹' : '›'}</button>
         <div className="sidebar-brand"><span className="brand-mark" title="Riverside Books"><i /></span>{sidebarOpen && <span><b>Riverside</b><strong>Books</strong></span>}</div>
