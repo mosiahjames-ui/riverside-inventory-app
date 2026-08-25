@@ -1,1 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --color-bg: #FBF9F5;
+  --color-primary: #1B3B2B;
+  --color-text: #2C2C2C;
+  --color-accent: #7A8B79;
+  --color-teal: #1E6B70;
+  --color-sky: #3A82C4;
+  --color-rewards-bg: #E7EFE3;
+  --color-rewards-text: #3F5C3D;
+  --color-rewards-border: #C3D4BC;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lora', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); font-weight: 400; line-height: 1.6; }
+button, input, select { font: inherit; }
+button, a { transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid color-mix(in srgb, var(--color-sky) 55%, transparent); outline-offset: 3px; }
 #root { min-height: 100vh; }
