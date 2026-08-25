@@ -163,13 +163,14 @@ function App() {
   }
 
   return (
-    <main>
+    <div className="app-shell">
       <div className="mobile-header"><button className="mobile-menu" type="button" aria-label={sidebarOpen ? 'Close team app menu' : 'Open team app menu'} onClick={() => setSidebarOpen((open) => !open)}>☰</button><span>Riverside Books</span></div>
       <aside className={`sidebar ${sidebarOpen ? 'open' : 'collapsed'}`} aria-label="Riverside Books team apps">
         <button className="sidebar-toggle" title={sidebarOpen ? 'Collapse team app sidebar' : 'Expand team app sidebar'} type="button" aria-label={sidebarOpen ? 'Collapse team app sidebar' : 'Expand team app sidebar'} onClick={() => setSidebarOpen((open) => !open)}>{sidebarOpen ? '‹' : '›'}</button>
         <div className="sidebar-brand"><span className="brand-mark" title="Riverside Books"><i /></span>{sidebarOpen && <span><b>Riverside</b><strong>Books</strong></span>}</div>
         {sidebarOpen && <><p className="sidebar-label">Team suite</p><nav className="team-links"><a href="https://riverside-readers-app.vercel.app/" target="_blank" rel="noreferrer" title="Open Riverside Readers in a new tab"><span>↗</span>Customer Ordering & Loyalty <small>↗</small></a><a className="active" href="#inventory"><span>▣</span>Staff Ops & Inventory</a><a href="https://riverside-books-chatbot-khaki.vercel.app/" target="_blank" rel="noreferrer" title="Open Riverside Books Chatbot in a new tab"><span>◌</span>Customer Support Chatbot <small>↗</small></a><a href="https://riverside-social-app.vercel.app/" target="_blank" rel="noreferrer" title="Open Riverside Marketing Content Generator in a new tab"><span>✦</span>Marketing Content Generator <small>↗</small></a><a href="https://pursuit-core.slack.com/archives/C0BQP69G23X/p1787360716063449" target="_blank" rel="noreferrer" title="Open team Slack in a new tab"><span>✧</span>Team Slack <small>↗</small></a></nav><div className="sidebar-foot">Shared Riverside workspace</div></>}
       </aside>
+      <main className="main-content">
       <header className="topbar"><a className="brand" href="#inventory"><span className="brand-mark"><i /></span><span><b>Riverside</b><strong>Books</strong></span></a><nav><a href="#inventory">Inventory</a><a href="#staff-picks">Pre-orders</a><a href="#about">About</a><a href="#settings">Admin Settings</a></nav><button className="refresh" type="button" onClick={loadData}>Refresh data</button></header>
       <div className="promo">A cozy corner for readers, now with teal and sky blue accents <span>↗</span></div>
       <section className="intro hero"><div><p className="eyebrow">Staff operations · Portland, Oregon</p><h2>Riverside Books</h2><p className="tagline">A live workspace for keeping shelves stocked, orders moving, and every shift in sync.</p></div><div className="hero-art" aria-label="Plant and book illustration"><div className="leaf leaf-one" /><div className="leaf leaf-two" /><div className="book-shape" /></div></section>
@@ -187,7 +188,8 @@ function App() {
       {activeTab === 'reports' && <section className="workspace reports"><div className="section-heading"><div><p className="eyebrow">Reordering</p><h2>Reports & reorder history</h2></div><button className="ready" onClick={exportReorderReport}>Export reorder CSV</button></div><div className="report-list">{inventoryRows.filter((row) => row.needs_reorder || row.status === 'Needs Reorder').map((row) => <div key={row.book_id}><strong>{row.title}</strong><span>{row.qty_in_stock ?? 0} on shelf · reorder {row.reorder_qty ?? 'quantity TBD'}</span></div>)}{inventoryRows.filter((row) => row.needs_reorder || row.status === 'Needs Reorder').length === 0 && <p className="empty">No titles currently need reordering.</p>}</div></section>}
       <section className="about" id="about"><div><p className="eyebrow">About Riverside Books</p><h2>A neighborhood bookstore by the river.</h2><p>Riverside Books is an independent neighborhood bookstore located along the riverfront in Portland, Oregon. We specialize in new books, thoughtful gifts, and hosting friendly literary gatherings for our community.</p><p>Let us know if you need help finding a book, checking event schedules, or anything else!</p></div><address><strong>Our Location & Contact Info</strong><span>428 Riverfront Place, Suite 100<br />Portland, OR 97201</span><a href="tel:+15035550192">(503) 555-0192</a><a href="mailto:hello@riversidebooks.com">hello@riversidebooks.com</a></address></section>
       <footer id="settings"><div><span className="brand-mark"><i /></span><b>Riverside Books</b></div><a href="#inventory">Inventory Management</a><a href="#about">About & Contact</a><a href="#tokens">Design Tokens Reference</a></footer>
-    </main>
+      </main>
+    </div>
   )
 }
 
