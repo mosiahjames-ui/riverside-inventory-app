@@ -172,7 +172,7 @@ function App() {
       </aside>
       <main className="main-content">
       <header className="topbar"><a className="brand" href="#inventory"><span className="brand-mark"><i /></span><span><b>Riverside</b><strong>Books</strong></span></a><nav><a href="#inventory">Inventory</a><a href="#staff-picks">Pre-orders</a><a href="#about">About</a><a href="#settings">Admin Settings</a></nav><button className="refresh" type="button" onClick={loadData}>Refresh data</button></header>
-      <section className="intro hero"><div><p className="eyebrow">Staff operations · Portland, Oregon</p><p className="tagline">A live workspace for keeping shelves stocked, orders moving, and every shift in sync.</p></div><div className="hero-art" aria-label="Plant and book illustration"><div className="leaf leaf-one" /><div className="leaf leaf-two" /><div className="book-shape" /></div></section>
+      <section className="intro hero"><div><p className="eyebrow">Staff operations · Portland, Oregon</p><h1 className="hero-title">Riverside Inventory &amp; Shift Control Center</h1><p className="tagline">A live workspace for keeping shelves stocked, orders moving, and every shift in sync.</p></div></section>
       {error && <div className="alert error" role="alert">Could not load shared data: {error}</div>}
       {!loading && inventoryRows.some((row) => row.low) && <div className="alert warning" role="status">{inventoryRows.filter((row) => row.low).length} title{inventoryRows.filter((row) => row.low).length === 1 ? '' : 's'} at or below the low-stock threshold. Review the reorder queue below.</div>}
       {notice && <div className="alert success">{notice}</div>}
